@@ -1,0 +1,48 @@
+/*
+Daniel Oh
+Professor Jamie Canizales
+CSCI 39548
+Final Project
+In this project, students are expected to build a website using the
+Express/Node.js platform, with the Axios HTTP client, that integrates a chosen
+public API from the given list: Public API Lists. The website should interact
+with the chosen API, retrieve data, and present it in a user-friendly manner.
+
+For this project, I am using the CocktailDB API to make a website that gives the user a random
+cocktail recipe with images of the cocktail.
+This is the .css styling file for the project
+*/
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:lightblue;
+}
+
+/* Title */
+h1 {
+    color: black;
+    margin-left: 15px;
+    font-family: fantasy, sans-serif;
+}
+
+/* Drink name in the center */
+h2 {
+    text-align: center;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 50px;
+}
+
+img {
+    max-width: 50%;
+    height: 450px;
+    display: block;
+    margin: 20px auto;
+}
+
+p {
+    margin: 12px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+

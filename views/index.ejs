@@ -1,0 +1,47 @@
+<!-- 
+Daniel Oh
+Professor Jamie Canizales
+CSCI 39548
+Final Project
+In this project, students are expected to build a website using the
+Express/Node.js platform, with the Axios HTTP client, that integrates a chosen
+public API from the given list: Public API Lists. The website should interact
+with the chosen API, retrieve data, and present it in a user-friendly manner.
+
+For this project, I am using the CocktailDB API to make a website that gives the user a random
+cocktail recipe with images of the cocktail.
+This is the .ejs file for the project.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocktail Generator</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+</head>
+<body>
+    <h1>Ready for a Random Cocktail?</h1>
+    <p>
+        We can all benefit from a drink daily. Come find some of the best cocktail recipes and enjoy! Not liking the cocktail you see?
+        Just refresh the page for a completely different recipe!
+    </p>
+    <p>
+        Thanks for stopping by!
+    </p>
+        <h2>
+            <!-- strDrink is the API property that represents the cocktail title  -->
+            <%= data.strDrink %> 
+        </h2>
+        <!-- strDrinkThumb is the API property that represents the cocktail URL -->
+        <img src="<%= data.strDrinkThumb %>" alt="<%= data.strDrink %>">
+        <!-- strInstructions is the API property that represents the instructions for making the cocktail -->
+        <p>
+            <%= data.strInstructions %>
+        </p>
+
+        
+
+</body>
+</html>
