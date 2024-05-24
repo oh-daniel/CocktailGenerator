@@ -26,7 +26,7 @@ app.use(express.static("public")); //for static files (CSS)
 
 app.set('view engine', 'ejs');
 
-// API integration
+// API integration, GET endpoint
 app.get("/", async (req, res) => {
     try {
       const response = await axios.get("https://www.thecocktaildb.com/api/json/v1/1/random.php"); //API integration
