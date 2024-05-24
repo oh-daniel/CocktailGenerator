@@ -30,8 +30,11 @@ app.set('view engine', 'ejs');
 app.get("/", async (req, res) => {
     try {
       const response = await axios.get("https://www.thecocktaildb.com/api/json/v1/1/random.php"); //API integration
-      const result = response.data.drinks[0]; //cocktail storage
-      res.render("index.ejs", { data: result });
+      const result = response.data.drinks[0]; //cocktail 
+      const ingredients = extractIngredients(result);
+      res.render("index.ejs", { data: result, ingredients: ingredients });
+
+      
       //Error handling for if the cocktail is not stored in result
       if(!result){
         throw new Error("Could not find a cocktail recipe.");
@@ -46,3 +49,34 @@ app.get("/", async (req, res) => {
 app.listen(port, () => {
     console.log(`server running on port ${port}`);
 });
+
+
+// ingredients are provided individually
+/*
+Ex.
+"strIngredient1" : "Vodka",
+"strIngredient2" : "Lime",
+"strMeasure1" : "2 oz",
+etc..
+*/
+// helper function to extract the ingredients in a cocktail
+function extractIngredients(result){ 
+  const ingredients = [];
+  for(let i = 1; i <= 100; i++){ 
+    const ingredient = result[`strIngredient${i}`]; //ingredient Ex. Light rum
+    const measurement = result[`strMeasure${i}`]; //measurements Ex. 1 tsp
+    // console.log(ingredient, measurement);
+    //issue with null and undefined being represented in ingredients
+    if(ingredient !== null && ingredient !== undefined && measurement !== null && measurement !== undefined){
+      // ingredients with no measurement Ex. ground Cayenne pepper
+      let fullIngredients = ingredient; 
+      // ingredients WITH measurements
+      if(measurement){
+        fullIngredients = `${measurement.trim()} ${ingredient.trim()}`;
+      }
+      ingredients.push(fullIngredients);
+    }
+  }
+  //separation by commas
+  return ingredients.join(", "); 
+}

@@ -36,8 +36,14 @@ This is the .ejs file for the project.
         </h2>
         <!-- strDrinkThumb is the API property that represents the cocktail URL -->
         <img src="<%= data.strDrinkThumb %>" alt="<%= data.strDrink %>">
+
+        <!-- Displaying ingredients -->
+        <p id="ingredients">
+            Ingredients: <%= ingredients %>
+        </p>
+
         <!-- strInstructions is the API property that represents the instructions for making the cocktail -->
-        <p>
+        <p id="instructions">
             <%= data.strInstructions %>
         </p>
 </body>
